@@ -28,29 +28,28 @@ var collection = {
 var oldCollection = JSON.parse(JSON.stringify(collection));
 
 
-function updateRecords(objects, id, prop, value) {
+function updateRecords(object, id, prop, value) {
     // Only change code below this line
     if(prop == "artist" && value !== "") {
-        //return value;
-        objects[prop] = value;
-    } else if(objects.hasOwnProperty(prop) && value == "") {
-        delete objects[prop];
+        object[prop] = value;
+    } else if(object.hasOwnProperty(prop) && value == "") {
+        delete object[prop];
     }
     if(prop == "album") {
-        if(objects.hasOwnProperty(prop) && value !== "") {
-            objects = value;
-        } else if(objects.hasOwnProperty(prop) && value == "") {
-            delete objects[prop];
+        if(object.hasOwnProperty(prop) && value !== "") {
+            object = value;
+        } else if(object.hasOwnProperty(prop) && value == "") {
+            delete object[prop];
         }
     }
     if(prop == "tracks") {
-        if(objects.hasOwnProperty(prop) && value !== "") {
-            objects[prop].push(value);
-        } else if (!objects.hasOwnProperty(prop) && value !== "") {
-            objects[prop] = [value];
+        if(object.hasOwnProperty(prop) && value !== "") {
+            object[prop].push(value);
+        } else if (!object.hasOwnProperty(prop) && value !== "") {
+            object[prop] = [value];
         }
     }
-    return objects;
+    return object;
     // Only change code above this line
 }
 
